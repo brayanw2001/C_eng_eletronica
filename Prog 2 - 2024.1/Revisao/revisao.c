@@ -18,59 +18,55 @@ typedef struct {
     Ponto2D vB;
     Ponto2D vC;
     Ponto2D vD;  
+    CorRGB cor;
 } Quadrilatero;
 
-float preencheInfos (Ponto2D *vA, Ponto2D *vB, Ponto2D *vC, Ponto2D *vD, CorRGB *cor);
+void preencheInfos (Quadrilatero *qua);
 
-float calc_area (Quadrilatero *qua);
+void calc_area (Quadrilatero *qua);
 
 int main (){
 
     setlocale(LC_ALL, "");
 
     Quadrilatero qua;
-    Ponto2D vA;
-    Ponto2D vB;
-    Ponto2D vC;
-    Ponto2D vD;
-    CorRGB cor;
 
-    preencheInfos (&vA, &vB, &vC, &vD, &cor);
+    preencheInfos (&qua);
     calc_area (&qua);
 
 return 0;
 }
 
-float preencheInfos (Ponto2D *vA, Ponto2D *vB, Ponto2D *vC, Ponto2D *vD, CorRGB *cor){
+void preencheInfos (Quadrilatero *qua){
     printf ("Insira x de vA: ");
-    scanf ("%f", &(*vA).x);
+    scanf ("%f", &(*qua).vA.x);
     printf ("Insira y de vA: ");
-    scanf ("%f", &(*vA).y);
+    scanf ("%f", &(*qua).vA.y);
 
     printf ("Insira x de vB: ");
-    scanf ("%f", &(*vB).x);
+    scanf ("%f", &(*qua).vB.x);
     printf ("Insira y de vB: ");
-    scanf ("%f", &(*vB).y);
+    scanf ("%f", &(*qua).vB.y);
 
     printf ("Insira x de vC: ");
-    scanf ("%f", &(*vC).x);
+    scanf ("%f", &(*qua).vC.x);
     printf ("Insira y de vC: ");
-    scanf ("%f", &(*vC).y);
+    scanf ("%f", &(*qua).vC.y);
 
     printf ("Insira x de vD: ");
-    scanf ("%f", &(*vD).x);
+    scanf ("%f", &(*qua).vC.x);
     printf ("Insira y de vD: ");
-    scanf ("%f", &(*vD).y);
+    scanf ("%f", &(*qua).vD.y);
 
-    printf ("Agora, insira a cor em RGB");
+    printf ("Agora, insira a cor em RGB\n");
     printf ("Insira R: ");
-    scanf ("%d", &(*cor).R);
+    scanf ("%d", &(*qua).cor.R);
     printf ("Insira G: ");
-    scanf ("%d", &(*cor).G);
+    scanf ("%d", &(*qua).cor.G);
     printf ("Insira B: ");
-    scanf ("%d", &(*cor).B);
+    scanf ("%d", &(*qua).cor.B);
 }
 
-float calc_area (Quadrilatero *qua) {
-    printf ("[TESTE] Valor de vA: %f %f", qua->vA.x, qua->vA.y);
+void calc_area (Quadrilatero *qua) {
+    printf ("[TESTE] Valor de vA: %.2f %.2f", qua->vA.x, qua->vA.y);
 }
