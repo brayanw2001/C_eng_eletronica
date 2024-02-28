@@ -69,4 +69,7 @@ void preencheInfos (Quadrilatero *qua){
 
 void calc_area (Quadrilatero *qua) {
     printf ("[TESTE] Valor de vA: %.2f %.2f", qua->vA.x, qua->vA.y);
+    
+    float AreaQuad = ((*qua).vA.x) * ((*qua).vB.y);
+    printf ("A área do quadro é: %.2f u.m.", AreaQuad);
 }
