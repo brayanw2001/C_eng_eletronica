@@ -5,16 +5,16 @@
 
 typedef struct {
   int *numbers;
-  int size;              // how many numbers should store
+  //int size;              // how many numbers should store
   int capacity;          // size of a collection
 } Stack;
 
 void create_stack (int capacity1, int capacity2, Stack **stack_p1, Stack **stack_p2);
-bool is_full (Stack *stack);
+//bool is_full (Stack *stack);
 //bool is_empty (Stack *stack);
 void push (Stack **stack_p1, Stack **stack_p2);
 void print_stack (Stack **stack_p1, Stack **stack_p2);
-//void pop (Stack **stack);
+void pop (Stack **stack_p1, Stack **stack_p2);
 //void destroy_stack (Stack *stack);
 
 int main () {
@@ -37,13 +37,18 @@ int main () {
         switch (opc)
         {
         case 1: 
-            //printf ("teste 1\n");
             push (&stack_p1, &stack_p2);
             break;
         case 2:
+            pop (&stack_p1, &stack_p2);
             break;
         case 3:
             print_stack (&stack_p1, &stack_p2);
+            break;
+        case 0:
+            break;
+        default:
+            printf("\nOpção inválida. Tente novamente.\n\n");
             break;
         }
     } while (opc != 0);
@@ -105,7 +110,32 @@ void print_stack (Stack **stack_p1, Stack **stack_p2) {
         printf ("[Pilha 1] Item %d = %d\n", i, (*stack_p1)->numbers[i]);
     }
 
+    printf("\n");
+
     for (int i = 0; i < (*stack_p2)->capacity; i++) {
         printf ("[Pilha 2] Item %d = %d\n", i, (*stack_p2)->numbers[i]);
     }
+}
+
+void pop (Stack **stack_p1, Stack **stack_p2) {
+    
+    int opc = 0;
+    
+    do {
+        printf ("Qual das pilhas deseja desempilhar?\n");
+        printf ("[1] Pilha 1, [2] Pilha 2 ou [0] Retornar?: ");
+        scanf ("%d", &opc);
+
+        switch (opc)
+        {
+        case 1:
+            (*stack_p1)->capacity--;
+            break;
+        case 2:
+            (*stack_p2)->capacity--;
+            break;
+        default:
+            printf("\n");
+        }
+    } while (opc != 0);
 }
