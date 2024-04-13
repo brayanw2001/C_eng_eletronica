@@ -1,0 +1,12 @@
+# Makefile
+
+all: exec
+
+exec: main.o implementation.o
+	gcc -o exec main.o implementation.o
+
+main.o: main.c specification.h 
+	gcc -o main.o main.c
+
+implementatition.o: implmentation.c specification.h
+	gcc -o implementation.o implementation.c

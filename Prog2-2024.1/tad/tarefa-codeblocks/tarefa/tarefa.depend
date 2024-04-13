@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1710194091 source:/home/brayan/Projects/C_eng_eletronica/Prog 2 - 2024.1/tad/tarefa-codeblocks/tarefa/implementation.c
+	"specification.h"
+	<locale.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1710194127 /home/brayan/Projects/C_eng_eletronica/Prog 2 - 2024.1/tad/tarefa-codeblocks/tarefa/specification.h
+
+1710194093 source:/home/brayan/Projects/C_eng_eletronica/Prog 2 - 2024.1/tad/tarefa-codeblocks/tarefa/main.c
+	"implementation.c"
+	"specification.h"
+
+1710194091 /home/brayan/Projects/C_eng_eletronica/Prog 2 - 2024.1/tad/tarefa-codeblocks/tarefa/implementation.c
+	"specification.h"
+	<locale.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
