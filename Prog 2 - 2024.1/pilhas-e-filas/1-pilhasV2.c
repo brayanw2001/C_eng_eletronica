@@ -15,6 +15,7 @@ void create_stack (int capacity1, int capacity2, Stack **stack_p1, Stack **stack
 void push (Stack **stack_p1, Stack **stack_p2);
 void print_stack (Stack **stack_p1, Stack **stack_p2);
 void pop (Stack **stack_p1, Stack **stack_p2);
+void stack_compare (Stack **stack_p1, Stack **stack_p2);
 //void destroy_stack (Stack *stack);
 
 int main () {
@@ -31,7 +32,7 @@ int main () {
   
     do {
         printf ("======== Stack Menu ========\n");
-        printf ("[1] Empilhar \n[2] Desempilhar \n[3] Imprimir. \n[0] Exit\n\n");
+        printf ("[1] Empilhar \n[2] Desempilhar \n[3] Imprimir. \n[4] Comparar \n[0] Exit\n\n");
         printf ("Escolha uma opção: ");
         scanf ("%d", &opc);
         switch (opc)
@@ -44,6 +45,9 @@ int main () {
             break;
         case 3:
             print_stack (&stack_p1, &stack_p2);
+            break;
+        case 4:
+            stack_compare (&stack_p1, &stack_p2);
             break;
         case 0:
             break;
@@ -138,4 +142,18 @@ void pop (Stack **stack_p1, Stack **stack_p2) {
             printf("\n");
         }
     } while (opc != 0);
+}
+
+void stack_compare (Stack **stack_p1, Stack **stack_p2) {
+    
+    
+    if ((*stack_p1)->capacity > (*stack_p2)->capacity) {
+        printf ("A pilha 1 é maior que a pilha 2.\n\n");
+    }
+    else if ((*stack_p1)->capacity < (*stack_p2)->capacity) {
+        printf ("A pilha 2 é maior que a pilha 1.\n\n");
+    }
+    else {
+        printf ("As pilhas são iguais.\n\n");
+    }
 }
