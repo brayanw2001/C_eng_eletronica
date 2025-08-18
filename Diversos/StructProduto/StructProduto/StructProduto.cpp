@@ -10,6 +10,7 @@ typedef struct Produto
 
 // fun lerPedido
 Produto cadastraProduto();
+void mostraProduto(Produto p);
 
 // fun AtualizaEstoque
 
@@ -17,15 +18,12 @@ int main()
 {
 	Produto produtos[5];
 
-	for (int i = 0; i <= 5; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		produtos[i] = cadastraProduto();
 
-		printf("\nProdutoId: %d", produtos[i].produtoId);
-		printf("\nNome: %s", produtos[i].nome);
-		printf("Preco: %.2f", produtos[i].preco);
-		printf("\nEstoque: %d", produtos[i].estoque);
-		printf("\n\n");
+		mostraProduto(produtos[i]);
+
 	}
 }
 
@@ -49,4 +47,13 @@ Produto cadastraProduto()
 	while (getchar() != '\n');
 
 	return p;
+}
+
+void mostraProduto(Produto p)
+{
+	printf("\nProdutoId: %d", p.produtoId);
+	printf("\nNome: %s", p.nome);
+	printf("Preco: %.2f", p.preco);
+	printf("\nEstoque: %d", p.estoque);
+	printf("\n\n");
 }
