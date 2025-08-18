@@ -35,5 +35,42 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Pasta de build
+/Debug/
+/Release/
+/x64/
+/x86/
+
+# Arquivos de configuração específicos do usuário
+.vs/
+*.sdf
+*.suo
+*.user
+*.sln.docstates
+.vscode/
+
+# Arquivos temporários
+*.log
+*.tmp
+*.bak
+*.ilk
+*.obj
+*.pch
+*.pdb
+*.idb
+
+# Arquivos do NuGet
+packages/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Testing/
+
+# Outros
+.DS_Store
+Thumbs.db
 ######################
 strings/output
