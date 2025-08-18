@@ -1,5 +1,7 @@
 #include <iostream>
 
+#define NUM  5
+
 typedef struct Produto
 {
 	int produtoId;
@@ -8,9 +10,9 @@ typedef struct Produto
 	int estoque;
 } Produto;
 
-// fun lerPedido
 Produto cadastraProduto();
-void mostraProduto(Produto p);
+void mostraProduto(Produto *p);
+Produto solicitaProduto();
 
 // fun AtualizaEstoque
 
@@ -18,13 +20,13 @@ int main()
 {
 	Produto produtos[5];
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < NUM; i++)
 	{
 		produtos[i] = cadastraProduto();
-
-		mostraProduto(produtos[i]);
+		printf("\n");
 
 	}
+		mostraProduto(produtos);
 }
 
 Produto cadastraProduto()
@@ -49,11 +51,25 @@ Produto cadastraProduto()
 	return p;
 }
 
-void mostraProduto(Produto p)
+void mostraProduto(Produto *p)
 {
-	printf("\nProdutoId: %d", p.produtoId);
-	printf("\nNome: %s", p.nome);
-	printf("Preco: %.2f", p.preco);
-	printf("\nEstoque: %d", p.estoque);
-	printf("\n\n");
+	for (int i = 0; i < NUM; i++)
+	{
+		printf("\nProdutoId: %d", p[i].produtoId);
+		printf("\nNome: %s", p[i].nome);
+		printf("Preco: %.2f", p[i].preco);
+		printf("\nEstoque: %d", p[i].estoque);
+		printf("\n\n");
+	}
+}
+
+Produto solicitaProduto()
+{
+	Produto produtoSolicitado;
+
+	printf("Insira o id do produto solicitado: ");
+	scanf_s("%d", &produtoSolicitado.produtoId);
+
+	printf("Insira a quantidade desejada: ");
+	scanf_s("%d", &produtoSolicitado.estoque);
 }
