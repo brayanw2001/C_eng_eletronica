@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define NUM  5
+#define NUM  2
 
 typedef struct Produto
 {
@@ -12,21 +12,22 @@ typedef struct Produto
 
 Produto cadastraProduto();
 void mostraProduto(Produto *p);
-Produto solicitaProduto();
-
-// fun AtualizaEstoque
+void solicitaProduto(Produto *p);
 
 int main()
 {
 	Produto produtos[5];
 
+	// Falta adicionar um menu
+
 	for (int i = 0; i < NUM; i++)
 	{
 		produtos[i] = cadastraProduto();
 		printf("\n");
-
 	}
 		mostraProduto(produtos);
+		printf("\n=== Solicite seu produto ===\n");
+		solicitaProduto(produtos);
 }
 
 Produto cadastraProduto()
@@ -63,7 +64,7 @@ void mostraProduto(Produto *p)
 	}
 }
 
-Produto solicitaProduto()
+void solicitaProduto(Produto *p)
 {
 	Produto produtoSolicitado;
 
@@ -72,4 +73,21 @@ Produto solicitaProduto()
 
 	printf("Insira a quantidade desejada: ");
 	scanf_s("%d", &produtoSolicitado.estoque);
+
+	for (int i = 0; i < NUM; i++)
+	{
+		if (p[i].produtoId == produtoSolicitado.produtoId)
+		{
+			if (p[i].estoque > 0 && (p[i].estoque >= produtoSolicitado.estoque))
+			{
+				p[i].estoque -= produtoSolicitado.estoque;
+				printf("Estoque de %s: %d", p[i].nome, p[i].estoque);
+			}
+			else
+			{
+				printf("Nao ha estoque o suficiente");
+				scanf_s("%d");	// apenas para visualizar o resultado final, antes do fechamento do programa
+			}
+		}
+	}
 }
