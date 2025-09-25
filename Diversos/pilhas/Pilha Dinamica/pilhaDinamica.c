@@ -23,7 +23,7 @@ No* empilha(No *topo, int dado)
         novoNo->proximo = topo;
         novoNo->dado = dado;     
 
-        topo = &novoNo;
+        topo = novoNo;
 
         return novoNo;
     }
