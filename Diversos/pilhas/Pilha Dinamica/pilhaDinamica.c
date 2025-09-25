@@ -33,3 +33,16 @@ No* empilha(No *topo, int dado)
         exit(EXIT_FAILURE);
     }
 }
+
+No *desempilha(No *topo)
+{
+    No *desempilhado = topo;
+
+    topo = topo->proximo;
+
+    printf("Dado removido: %d\n", desempilhado->dado);
+
+    free(desempilhado);
+
+    return topo;
+}
