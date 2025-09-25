@@ -14,12 +14,22 @@ void iniciaPilha (No *topo)
     topo = NULL;
 }
 
-void empilha(No *topo, int dado)
+No* empilha(No *topo, int dado)
 {
-    No* NovoNo = (No*)malloc(sizeof(No));
+    No* novoNo = (No*)malloc(sizeof(No));
 
-    NovoNo->proximo = topo;
-    NovoNo->dado = dado;
+    if (novoNo)
+    {
+        novoNo->proximo = topo;
+        novoNo->dado = dado;     
 
-    topo = &NovoNo;
+        topo = &novoNo;
+
+        return novoNo;
+    }
+    else
+    {
+        fprintf(stderr, "Erro ao alocar memoria!");
+        exit(EXIT_FAILURE);
+    }
 }
