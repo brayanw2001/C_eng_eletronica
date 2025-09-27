@@ -6,22 +6,23 @@
 struct no
 {
     int dado;
-    No *proximo;
+    No* proximo;
 };
 
-void iniciaPilha (No *topo)
+No* IniciaPilha()
 {
-    topo = NULL;
+    No* topo = NULL;
+    return topo;
 }
 
-No* empilha(No *topo, int dado)
+No* Empilha(No* topo, int dado)
 {
     No* novoNo = (No*)malloc(sizeof(No));
 
     if (novoNo)
     {
         novoNo->proximo = topo;
-        novoNo->dado = dado;     
+        novoNo->dado = dado;
 
         topo = novoNo;
 
@@ -34,15 +35,33 @@ No* empilha(No *topo, int dado)
     }
 }
 
-No *desempilha(No *topo)
+No* Desempilha(No* topo)
 {
-    No *desempilhado = topo;
+    if (topo != NULL)
+    {
+        No* desempilhado = topo;
 
-    topo = topo->proximo;
+        topo = topo->proximo;
 
-    printf("Dado removido: %d\n", desempilhado->dado);
+        printf("Dado removido: %d\n", desempilhado->dado);
 
-    free(desempilhado);
+        free(desempilhado);
 
-    return topo;
+        return topo;
+    }
+    else
+    {
+        fprintf(stderr, "A pilha está vazia. impossivel desempilhar\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void MostraPilha(No* topo)
+{
+    printf("\nPilha:");
+
+    for (No* ptr = topo; ptr != NULL; ptr = ptr->proximo)
+    {
+        printf("\n%d", ptr->dado);
+    }
 }
