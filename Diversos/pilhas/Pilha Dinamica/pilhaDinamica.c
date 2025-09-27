@@ -35,19 +35,18 @@ No* Empilha(No* topo, int dado)
     }
 }
 
-No* Desempilha(No* topo)
+void Desempilha(No** topo)
 {
     if (topo != NULL)
     {
-        No* desempilhado = topo;
+        No* desempilhado = *topo;
 
-        topo = topo->proximo;
+        *topo = (*topo)->proximo;
 
-        printf("Dado removido: %d\n", desempilhado->dado);
+        printf("\nDado removido: %d\n", desempilhado->dado);
 
         free(desempilhado);
 
-        return topo;
     }
     else
     {

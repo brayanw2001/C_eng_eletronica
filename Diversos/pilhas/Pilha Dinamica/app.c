@@ -14,6 +14,9 @@ int main(void)
     pilha = Empilha(pilha, 4);
 
     MostraPilha(pilha);
+    Desempilha(&pilha);
+    MostraPilha(pilha);
+
 
     return 0;
 }
