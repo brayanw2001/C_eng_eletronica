@@ -55,12 +55,10 @@ void MostraLista(no* topo)
 	int i = 0;
 	no* ptrAux = topo;		//não precisaria do aux, mas acredito que melhora o entendimento
 
-	while (ptrAux->proximo != NULL)
+	while (ptrAux != NULL)
 	{
 		printf("[%d] - %d\n", i, ptrAux->dado);
 		ptrAux = ptrAux->proximo;
 		i++;
 	}
-	printf("[%d] - %d\n", i, ptrAux->dado);
-
 }
