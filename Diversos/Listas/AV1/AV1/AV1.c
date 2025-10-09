@@ -1,12 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "lista.h"
 
+void menu(no** topo);
+
 int main()
 {
-    char opc = '7';
     no* topo = NULL;
+    menu(&topo);
+
+    return 0;
+}
+
+void menu(no** topo)
+{
+    char opc = '0';
     pessoa contato;
 
     while (opc != '7')
@@ -18,24 +29,31 @@ int main()
             "[5] - Remove Contato\n"
             "[6] - Remove Contato duplicado\n"
             "[7] - Sair\n"
+            "Insira uma opcao: > "
         );
+        scanf("%c", &opc);
+        getchar();
 
         switch (opc)
         {
-            case '1':
-                printf("Nome: ");
-                fgets(contato.nome, sizeof(contato.nome), stdin);
-                
-                printf("Numero: ");
-                scanf("%hu", contato.telefone);
-                InsereNoTopo(topo, contato);
-                break;
+        case '1':
+            printf("\nNome: ");
+            fgets(contato.nome, sizeof(contato.nome), stdin);
+
+            printf("Numero: ");
+            scanf("%hu", contato.telefone);
+            getchar();
+
+            printf("email: ");
+            fgets(contato.email, sizeof(contato.nome), stdin);
+
+            InsereNoTopo(topo, contato);
+            printf("\n");
+
+            break;
         default:
             break;
         }
     }
-
-
-    return 0;
 }
 
