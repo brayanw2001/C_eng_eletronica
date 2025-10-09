@@ -2,7 +2,7 @@ typedef struct Pessoa
 {
 	char nome[40];
 	char email[40];
-	unsigned short int telefone[15];
+	char telefone[15];
 } pessoa;
 
 typedef struct No no;

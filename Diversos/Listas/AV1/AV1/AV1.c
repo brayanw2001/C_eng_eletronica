@@ -5,19 +5,12 @@
 
 #include "lista.h"
 
-void menu(no** topo);
+void menu();
 
 int main()
 {
-    no* topo = NULL;
-    menu(&topo);
-
-    return 0;
-}
-
-void menu(no** topo)
-{
     char opc = '0';
+    no* topo = NULL;
     pessoa contato;
 
     while (opc != '7')
@@ -36,24 +29,31 @@ void menu(no** topo)
 
         switch (opc)
         {
-        case '1':
-            printf("\nNome: ");
-            fgets(contato.nome, sizeof(contato.nome), stdin);
+            case '1':
+                printf("\nNome: ");
+                fgets(contato.nome, sizeof(contato.nome), stdin);
+                contato.nome[strlen(contato.nome) - 1] = '\0';
+                
+                printf("Numero: ");
+                fgets(contato.telefone, sizeof(contato.telefone), stdin);
+                contato.telefone[strlen(contato.telefone) - 1] = '\0';
 
-            printf("Numero: ");
-            scanf("%hu", contato.telefone);
-            getchar();
+                printf("email: ");
+                fgets(contato.email, sizeof(contato.email), stdin);
+                contato.email[strlen(contato.email) - 1] = '\0';
 
-            printf("email: ");
-            fgets(contato.email, sizeof(contato.nome), stdin);
+                topo = InsereNoTopo(topo, contato);
+                printf("\n");
+                break;
 
-            InsereNoTopo(topo, contato);
-            printf("\n");
-
-            break;
+            case '2':
+                MostraLista(topo);
         default:
             break;
         }
     }
+
+
+    return 0;
 }
 

@@ -7,7 +7,7 @@
 //{
 //	char nome[40];
 //	char email[40];
-//	unsigned short int telefone[15];
+//	char telefone[15];
 //};
 
 struct No
@@ -61,14 +61,18 @@ void MostraLista(no* topo)
 	int i = 0;
 	no* ptrAux = topo;		
 
-	printf("NOME \t NUMERO \t EMAIL\n");
+	printf("\n%-20s%-20s%-20s\n", "NOME", "NUMERO", "EMAIL");
 
 	while (ptrAux != NULL)
 	{
-		printf("%s \t %hu \t &s", ptrAux->contato.nome, ptrAux->contato.telefone, 
-			ptrAux->contato.email);
+        printf("%-20s%-20s%-20s\n", 
+               ptrAux->contato.nome, 
+               ptrAux->contato.telefone, 
+               ptrAux->contato.email);
 
 		ptrAux = ptrAux->proximo;
 		i++;
 	}
+
+	printf("\n");
 }
