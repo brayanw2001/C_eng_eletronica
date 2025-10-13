@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "Lista.h"
 
@@ -10,11 +11,11 @@
 //	char telefone[15];
 //};
 
-struct No
-{
-	pessoa contato;
-	no* proximo;
-};
+//struct No
+//{
+//	pessoa contato;
+//	no* proximo;
+//};
 
 no* InsereNoTopo(no* topo, pessoa contato)
 {
@@ -76,3 +77,64 @@ void MostraLista(no* topo)
 
 	printf("\n");
 }
+
+no* BuscaContato(no* topo)
+{
+	char nome[40];
+	printf("Nome: ");
+	fgets(nome, sizeof(nome), stdin);
+	nome[strlen(nome) - 1] = '\0';
+
+	no* ptrAux = topo;
+
+	while (strcmp((ptrAux->contato.nome), nome) != 0)
+	{
+		if (ptrAux->proximo == NULL && ptrAux->contato.nome != nome)
+			return NULL;
+
+		ptrAux = ptrAux->proximo;
+	}
+	return ptrAux;
+}
+
+no* AtualizaContato(no* topo)
+{
+	no* pesquisa = BuscaContato(topo);
+
+	printf("\n=== EDITAR CONTATO ===");
+
+	printf("\nNome: ");
+	fgets(pesquisa->contato.nome, sizeof(pesquisa->contato.nome), stdin);
+	pesquisa->contato.nome[strlen(pesquisa->contato.nome) - 1] = '\0';
+
+	printf("Numero: ");
+	fgets(pesquisa->contato.telefone, sizeof(pesquisa->contato.telefone), stdin);
+	pesquisa->contato.telefone[strlen(pesquisa->contato.telefone) - 1] = '\0';
+
+	printf("email: ");
+	fgets(pesquisa->contato.email, sizeof(pesquisa->contato.email), stdin);
+	pesquisa->contato.email[strlen(pesquisa->contato.email) - 1] = '\0';
+}
+
+no* RemoveContato(no* topo)
+{
+	no* ptrAux = topo;
+	no* ptrAux2 = topo;
+	no* pesquisa = BuscaContato(topo);
+
+	while (ptrAux->proximo != pesquisa)
+	{
+		ptrAux = ptrAux->proximo;
+	}
+
+	while (ptrAux2->proximo == pesquisa)
+	{
+		ptrAux2 = ptrAux2->proximo;
+	}
+
+	ptrAux->proximo = ptrAux2->proximo;
+
+	free(ptrAux2);
+}
+
+

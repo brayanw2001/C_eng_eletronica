@@ -48,6 +48,29 @@ int main()
 
             case '2':
                 MostraLista(topo);
+                break;
+
+            case '3':
+            {
+                no* pesquisa = BuscaContato(topo);
+
+                if (pesquisa == NULL)
+                    printf("Nada encontrado...");
+                else
+                    printf("\n%-20s%-20s%-20s\n", "NOME", "NUMERO", "EMAIL");
+                    printf("%-20s%-20s%-20s\n",
+                        pesquisa->contato.nome,
+                        pesquisa->contato.telefone,
+                        pesquisa->contato.email);
+                    printf("\n");
+                break;
+            }
+            case '4':
+                AtualizaContato(topo);
+                break;
+            case '5':
+                RemoveContato(topo);
+                break;
         default:
             break;
         }
