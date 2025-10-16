@@ -127,14 +127,7 @@ no* RemoveContato(no* topo)
 		ptrAux = ptrAux->proximo;
 	}
 
-	while (ptrAux2->proximo == pesquisa)
-	{
-		ptrAux2 = ptrAux2->proximo;
-	}
+	ptrAux->proximo = pesquisa->proximo;
 
-	ptrAux->proximo = ptrAux2->proximo;
-
-	free(ptrAux2);
+	free(pesquisa);
 }
-
-

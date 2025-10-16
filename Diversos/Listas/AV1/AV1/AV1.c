@@ -71,6 +71,9 @@ int main()
             case '5':
                 RemoveContato(topo);
                 break;
+            case '6':
+                RemoveDuplicado(topo);
+                break;
         default:
             break;
         }
