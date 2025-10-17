@@ -131,3 +131,38 @@ no* RemoveContato(no* topo)
 
 	free(pesquisa);
 }
+
+no* RemoveDuplicado(no* topo)
+{
+	for (no* ptrAux = topo; ptrAux != NULL; ptrAux = ptrAux->proximo)
+	{
+		for (no* ptrAux2 = topo; ptrAux2 != NULL; ptrAux2 = ptrAux2->proximo)
+		{
+			if ((strcmp(ptrAux->contato.nome, ptrAux2->contato.nome) == 0) && ptrAux != ptrAux2)
+			{
+				no* contatoRemovido = ptrAux2;
+				RemoveContatoSemPesquisa(topo, contatoRemovido);
+			}
+		}
+	}
+}
+
+no* RemoveContatoSemPesquisa(no* topo, no* contato)
+{
+	no* ptrAux = topo;
+
+	while (ptrAux->proximo != contato)
+	{
+		ptrAux = ptrAux->proximo;
+	}
+
+	ptrAux->proximo = contato->proximo;
+
+	printf(">>Duplicado<<: %s", contato->contato.nome);
+
+	free(contato);
+
+	MostraLista(topo);
+
+	return topo;
+}
