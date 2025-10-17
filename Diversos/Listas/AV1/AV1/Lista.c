@@ -132,37 +132,32 @@ no* RemoveContato(no* topo)
 	free(pesquisa);
 }
 
-no* RemoveDuplicado(no* topo)
+void RemoveDuplicado(no* topo)
 {
-	for (no* ptrAux = topo; ptrAux != NULL; ptrAux = ptrAux->proximo)
+	if (topo == NULL) return;
+	if (topo->proximo == NULL) return;
+
+	no *ptrAux, *ptrAux2, *duplicado;
+	ptrAux = topo;
+
+	while (ptrAux != NULL && ptrAux->proximo != NULL)
 	{
-		for (no* ptrAux2 = topo; ptrAux2 != NULL; ptrAux2 = ptrAux2->proximo)
+		ptrAux2 = ptrAux;
+
+		while (ptrAux2->proximo != NULL)
 		{
-			if ((strcmp(ptrAux->contato.nome, ptrAux2->contato.nome) == 0) && ptrAux != ptrAux2)
+			if (strcmp(ptrAux->contato.nome, ptrAux2->proximo->contato.nome) == 0)
 			{
-				no* contatoRemovido = ptrAux2;
-				RemoveContatoSemPesquisa(topo, contatoRemovido);
+				duplicado = ptrAux2->proximo;
+				ptrAux2->proximo = ptrAux2->proximo->proximo;
+				free(duplicado);
+				MostraLista(topo);
+			}
+			else
+			{
+				ptrAux2 = ptrAux2->proximo;
 			}
 		}
-	}
-}
-
-no* RemoveContatoSemPesquisa(no* topo, no* contato)
-{
-	no* ptrAux = topo;
-
-	while (ptrAux->proximo != contato)
-	{
 		ptrAux = ptrAux->proximo;
 	}
-
-	ptrAux->proximo = contato->proximo;
-
-	printf(">>Duplicado<<: %s", contato->contato.nome);
-
-	free(contato);
-
-	MostraLista(topo);
-
-	return topo;
 }

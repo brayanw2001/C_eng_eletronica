@@ -17,5 +17,4 @@ void MostraLista(no* topo);
 no* BuscaContato(no* topo);
 no* AtualizaContato(no* topo);
 no* RemoveContato(no* topo);
-no* RemoveDuplicado(no* topo);
-no* RemoveContatoSemPesquisa(no* topo, no* contato);
+void RemoveDuplicado(no* topo);
