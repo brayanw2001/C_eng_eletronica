@@ -15,6 +15,6 @@ no* InsereNoTopo(no* topo, pessoa contato);
 no* InsereNoFim(no* topo, pessoa contato);
 void MostraLista(no* topo);
 no* BuscaContato(no* topo);
-no* AtualizaContato(no* topo);
+void AtualizaContato(no* topo);
 no* RemoveContato(no* topo);
 void RemoveDuplicado(no* topo);

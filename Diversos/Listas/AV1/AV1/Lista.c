@@ -80,6 +80,8 @@ void MostraLista(no* topo)
 
 no* BuscaContato(no* topo)
 {
+	if (topo == NULL) return;
+
 	char nome[40];
 	printf("Nome: ");
 	fgets(nome, sizeof(nome), stdin);
@@ -89,15 +91,17 @@ no* BuscaContato(no* topo)
 
 	while (strcmp((ptrAux->contato.nome), nome) != 0)
 	{
-		if (ptrAux->proximo == NULL && ptrAux->contato.nome != nome)
+		if (ptrAux->proximo == NULL)
 			return NULL;
 
 		ptrAux = ptrAux->proximo;
 	}
+	printf("ptrAux->contato.nome = %s\n", ptrAux->contato.nome);
+	printf("Endereço de ptrAux: %p\n", (void*)ptrAux);
 	return ptrAux;
 }
 
-no* AtualizaContato(no* topo)
+void AtualizaContato(no* topo)
 {
 	no* pesquisa = BuscaContato(topo);
 
@@ -121,15 +125,30 @@ no* RemoveContato(no* topo)
 	no* ptrAux = topo;
 	no* ptrAux2 = topo;
 	no* pesquisa = BuscaContato(topo);
+	printf("Endereço de ptrAux: %p\n", (void*)pesquisa);
+	printf("pesquisa->contato.nome = %s\n", pesquisa->contato.nome);
 
-	while (ptrAux->proximo != pesquisa)
+	if (ptrAux == NULL) return;
+	
+	if (topo == pesquisa)
 	{
-		ptrAux = ptrAux->proximo;
+		topo = topo->proximo;
+		free(pesquisa);
+		return topo;
 	}
+	else
+	{
+		while (ptrAux->proximo != pesquisa)
+		{
+			ptrAux = ptrAux->proximo;
+			if (ptrAux == NULL) return;
+		}
 
-	ptrAux->proximo = pesquisa->proximo;
+		ptrAux->proximo = pesquisa->proximo;
 
-	free(pesquisa);
+		free(pesquisa);
+		return topo;
+	}
 }
 
 void RemoveDuplicado(no* topo)

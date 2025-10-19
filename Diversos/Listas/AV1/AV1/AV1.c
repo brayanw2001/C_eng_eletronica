@@ -69,7 +69,7 @@ int main()
                 AtualizaContato(topo);
                 break;
             case '5':
-                RemoveContato(topo);
+                topo = RemoveContato(topo);
                 break;
             case '6':
                 RemoveDuplicado(topo);
