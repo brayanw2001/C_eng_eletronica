@@ -83,8 +83,6 @@ no* BuscaContato(no* topo)
 
 		ptrAux = ptrAux->proximo;
 	}
-	printf("ptrAux->contato.nome = %s\n", ptrAux->contato.nome);
-	printf("Endereço de ptrAux: %p\n", (void*)ptrAux);
 	return ptrAux;
 }
 
@@ -112,8 +110,6 @@ no* RemoveContato(no* topo)
 	no* ptrAux = topo;
 	no* ptrAux2 = topo;
 	no* pesquisa = BuscaContato(topo);
-	printf("Endereço de ptrAux: %p\n", (void*)pesquisa);
-	printf("pesquisa->contato.nome = %s\n", pesquisa->contato.nome);
 
 	if (ptrAux == NULL) return;
 	
