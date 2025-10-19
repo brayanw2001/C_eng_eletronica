@@ -18,3 +18,4 @@ no* BuscaContato(no* topo);
 void AtualizaContato(no* topo);
 no* RemoveContato(no* topo);
 void RemoveDuplicado(no* topo);
+void OrdenaListaAlfabetica(no* topo);

@@ -43,6 +43,7 @@ int main()
                 contato.email[strlen(contato.email) - 1] = '\0';
 
                 topo = InsereNoTopo(topo, contato);
+                OrdenaListaAlfabetica(topo);
                 printf("\n");
                 break;
 

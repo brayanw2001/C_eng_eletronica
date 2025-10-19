@@ -4,19 +4,6 @@
 
 #include "Lista.h"
 
-//struct Pessoa
-//{
-//	char nome[40];
-//	char email[40];
-//	char telefone[15];
-//};
-
-//struct No
-//{
-//	pessoa contato;
-//	no* proximo;
-//};
-
 no* InsereNoTopo(no* topo, pessoa contato)
 {
 	no* novoNo = calloc(1, sizeof(no));
@@ -179,4 +166,33 @@ void RemoveDuplicado(no* topo)
 		}
 		ptrAux = ptrAux->proximo;
 	}
+}
+
+void OrdenaListaAlfabetica(no* topo)
+{
+	if (topo == NULL || topo->proximo == NULL)
+		return;
+
+	int trocou;
+	no* ptrAux;
+	pessoa temp;
+
+	do
+	{
+		trocou = 0;
+		ptrAux = topo;
+
+		while (ptrAux->proximo != NULL)
+		{
+			if (strcmp(ptrAux->contato.nome, ptrAux->proximo->contato.nome) > 0)
+			{
+				temp = ptrAux->contato;
+				ptrAux->contato = ptrAux->proximo->contato;
+				ptrAux->proximo->contato = temp;
+				trocou = 1;
+			}
+			ptrAux = ptrAux->proximo;
+		}
+
+	} while (trocou);
 }
