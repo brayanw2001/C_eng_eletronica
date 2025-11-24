@@ -1,5 +1,6 @@
 typedef struct No
 {
+	int id;
 	char info;
 	struct No* dir;
 	struct No* esq;
@@ -8,3 +9,4 @@ typedef struct No
 no* Inicializa();
 no* CriaNo(char info);
 void Imprime(no* raiz, int tab);
+no* Busca(no* no, int id);

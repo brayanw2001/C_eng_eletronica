@@ -35,4 +35,18 @@ void Imprime(no* raiz, int tab)
 	else printf("vazio");
 }
 
+no* Busca(no* no, int id)
+{
+	if (no == NULL)
+		return NULL;
+
+	else if (id < no)
+		return Busca(no->esq, id);
+
+	else if (id > no)
+		return Busca(no->dir, id);
+
+	else
+		return no;
+}
 
