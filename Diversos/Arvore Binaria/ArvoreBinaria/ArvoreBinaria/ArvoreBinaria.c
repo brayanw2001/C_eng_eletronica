@@ -11,11 +11,18 @@ no* Inicializa()
 no* CriaNo(char info)
 {
 	no* novoNo = (no*) malloc(sizeof(no));
+	novoNo->id = geraId();
 	novoNo->info = info;
 	novoNo->esq = NULL;
 	novoNo->dir = NULL;
 
 	return novoNo;
+}
+
+int geraId()
+{
+	static int id = 0;
+	return id++;
 }
 
 void Imprime(no* raiz, int tab)
@@ -27,7 +34,7 @@ void Imprime(no* raiz, int tab)
 
 	if (raiz != NULL)
 	{
-		printf("%c\n", raiz->info);
+		printf("%c | %d\n", raiz->info, raiz->id);
 		Imprime(raiz->esq, tab + 2);
 		printf("\n");
 		Imprime(raiz->dir, tab + 2);
@@ -35,18 +42,36 @@ void Imprime(no* raiz, int tab)
 	else printf("vazio");
 }
 
+// Busca recursiva. Mais elegante, porém menos otimizada
+// no* Busca(no* no, int id)
+// {
+// 	if (no == NULL)
+// 		return NULL;
+//
+// 	else if (id < no->id)
+// 		return Busca(no->esq, id);
+//
+// 	else if (id > no->id)
+// 		return Busca(no->dir, id);
+//
+// 	else
+// 		return no;
+// }
+
+// Busca iterativa
 no* Busca(no* no, int id)
 {
 	if (no == NULL)
 		return NULL;
 
-	else if (id < no)
-		return Busca(no->esq, id);
-
-	else if (id > no)
-		return Busca(no->dir, id);
-
-	else
-		return no;
+	while (no != NULL)
+	{
+		if (id < no->id)
+			no = no->esq;
+		else if (id > no->id)
+			no = no->dir;
+		else
+			return no;
+	}
+	return NULL;
 }
-

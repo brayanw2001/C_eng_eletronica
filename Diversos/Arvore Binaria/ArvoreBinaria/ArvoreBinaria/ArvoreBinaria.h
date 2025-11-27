@@ -8,5 +8,6 @@ typedef struct No
 
 no* Inicializa();
 no* CriaNo(char info);
+int geraId();
 void Imprime(no* raiz, int tab);
 no* Busca(no* no, int id);
