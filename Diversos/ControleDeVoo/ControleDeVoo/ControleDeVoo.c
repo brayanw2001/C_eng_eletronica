@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 #include "ControleDeVoo.h"
@@ -77,10 +78,10 @@ dados* incrementarTarefas(dados* tarefas, int *novoTamanho)
 
 	printf("\nInsira a tarefa: ");
 
-	fgets(tarefas[i].tarefa, 30, stdin);
-	tarefas[i].tarefa[strcspn(tarefas[i].tarefa, "\n")] = '\0';
+	fgets(tarefaAtualizadas[i].tarefa, 30, stdin);
+	tarefaAtualizadas[i].tarefa[strcspn(tarefaAtualizadas[i].tarefa, "\n")] = '\0';
 
-	tarefas[i].prior = rand() % (4 * (*novoTamanho) );
+	tarefaAtualizadas[i].prior = rand() % (4 * (*novoTamanho) );
 
 	return tarefaAtualizadas;
 }
