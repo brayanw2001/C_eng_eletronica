@@ -11,6 +11,12 @@ dados* novaTarefa(int numTarefas)
 {
 	dados* tarefas = (dados*) malloc (sizeof(dados) * numTarefas);
 
+	if (tarefas == NULL)
+	{
+		fprintf(stderr, "Erro ao alocar memória.");
+		return tarefas;
+	}
+
 	int* prioridades = geraPrioridades(numTarefas);
 
 	for (int i = 0; i < numTarefas; i++)
@@ -23,6 +29,7 @@ dados* novaTarefa(int numTarefas)
 	}
 
 	free(prioridades);
+	printf("\n");
 
 	return tarefas;
 }
@@ -32,9 +39,15 @@ int* geraPrioridades(int numTarefas)
 {
 	int* prioridades = (int*)malloc(sizeof(int) * numTarefas);
 
+	if (prioridades == NULL)
+	{
+		fprintf(stderr, "Erro ao gerar tarefas.");
+		return NULL;
+	}
+
 	for (int i = 0; i < numTarefas; i++)
 	{
-		prioridades[i] = rand() % ((4 *numTarefas) + 1);
+		prioridades[i] = rand() % ((4 * numTarefas) + 1);
 
 		for (int j = 0; j < i; j++)
 		{
@@ -47,5 +60,28 @@ int* geraPrioridades(int numTarefas)
 	}
 
 	return prioridades;
+}
+
+dados* incrementarTarefas(dados* tarefas, int *novoTamanho)
+{
+	(*novoTamanho)++;
+	int i = (*novoTamanho)-1;
+
+	dados* tarefaAtualizadas = (dados*)realloc(tarefas, (sizeof(dados) * (*novoTamanho)) );
+
+	if (tarefas == NULL)
+	{
+		fprintf(stderr, "Erro ao expandir as tarefas.");
+		return tarefas;
+	}
+
+	printf("\nInsira a tarefa: ");
+
+	fgets(tarefas[i].tarefa, 30, stdin);
+	tarefas[i].tarefa[strcspn(tarefas[i].tarefa, "\n")] = '\0';
+
+	tarefas[i].prior = rand() % (4 * (*novoTamanho) );
+
+	return tarefaAtualizadas;
 }
 
