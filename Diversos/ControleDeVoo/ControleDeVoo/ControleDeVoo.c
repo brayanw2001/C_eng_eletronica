@@ -8,6 +8,8 @@
 
 #include "ControleDeVoo.h"
 
+#include "ArvoreBinaria.h"
+
 dados* novaTarefa(int numTarefas)
 {
 	dados* tarefas = (dados*) malloc (sizeof(dados) * numTarefas);
@@ -26,7 +28,10 @@ dados* novaTarefa(int numTarefas)
 		fgets(tarefas[i].tarefa, 30, stdin);
 		tarefas[i].tarefa[strcspn(tarefas[i].tarefa, "\n")] = '\0';
 
-		tarefas[i].prior = prioridades[i];		
+		tarefas[i].prior = prioridades[i];
+
+		no* noTarefas = CriaNo(tarefas);
+		InsereNos(noTarefas);
 	}
 
 	free(prioridades);
