@@ -5,18 +5,21 @@
 #include <time.h>
 
 #include "ControleDeVoo.h"
+#include "ArvoreBinaria.h"
 
 int main() 
 {
 
     int numTarefas, opc;
     dados* tarefas = NULL;
+    no* arvoreBinaria = NULL;
 
     do 
     {
         printf("[1] Criar Vetor\n"
                "[2] Incrementar tarefas\n"
-               "[3] ...");
+               "[3] ...\n"
+               "[5] - Arvore Binaria\n");
 
         printf("Insira a opcao: ");
         scanf("%d", &opc);
@@ -39,6 +42,10 @@ int main()
             case 2:
                 tarefas = incrementarTarefas(tarefas, &numTarefas);
                 printf("\n\n");
+                break;
+            case 5:
+                arvoreBinaria = InsereNos(tarefas, numTarefas);
+                Imprime(arvoreBinaria, 0);
                 break;
             // ... outros cases
             case 9:

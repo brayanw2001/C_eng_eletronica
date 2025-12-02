@@ -1,4 +1,6 @@
-// AVIÃO
+#ifndef CONTROLE_DE_VOO_H  
+#define CONTROLE_DE_VOO_H
+
 typedef struct
 {
 	char tarefa[30];
@@ -8,3 +10,5 @@ typedef struct
 dados* novaTarefa(int numTarefas);
 int* geraPrioridades(int numTarefas);
 dados* incrementarTarefas(dados* tarefas, int *novoTamanho);
+
+#endif

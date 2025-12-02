@@ -8,7 +8,7 @@ typedef struct No
 } no;
 
 no* Inicializa();
-no* CriaNo(dados info);
+no* CriaNo(dados* info);
 void Imprime(no* raiz, int tab);
 no* Busca(no* no, int id);
-void InsereNos(no* no, dados info);
+no* InsereNos(dados* info, int numTarefas);

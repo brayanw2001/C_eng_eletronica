@@ -7,7 +7,6 @@
 #include <time.h>
 
 #include "ControleDeVoo.h"
-
 #include "ArvoreBinaria.h"
 
 dados* novaTarefa(int numTarefas)
@@ -29,9 +28,6 @@ dados* novaTarefa(int numTarefas)
 		tarefas[i].tarefa[strcspn(tarefas[i].tarefa, "\n")] = '\0';
 
 		tarefas[i].prior = prioridades[i];
-
-		no* noTarefas = CriaNo(tarefas);
-		InsereNos(noTarefas);
 	}
 
 	free(prioridades);

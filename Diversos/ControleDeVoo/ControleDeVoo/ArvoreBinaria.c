@@ -9,47 +9,90 @@ no* Inicializa()
 	return NULL;
 }
 
-no* CriaNo(dados info)
+//void InsereNos(no* no, dados* info)
+//{
+//	dados* novoNo = CriaNo(info);
+//
+//	while (no != NULL)
+//	{
+//		if (info->prior < no->dado->prior)
+//			no = no->esq ;
+//		else if (info->prior > no->dado->prior)
+//			no = no->dir;
+//	}
+//
+//	 if (info->prior < no->dado->prior)
+//		no->esq = CriaNo(info);
+//	 else if (info->prior > no->dado->prior)
+//	 	no->dir = CriaNo(info);
+//	 else
+//		printf("No ja existente ou invalido");
+//}
+no* InsereNos(dados* info, int numTarefas)
 {
-	no* novoNo = (no*) malloc(sizeof(no));
-	novoNo->dado = info;
-	novoNo->esq = NULL;
-	novoNo->dir = NULL;
+	no* no = Inicializa();
 
-	return novoNo;
-}
-
-void InsereNos(no* no, dados info)
-{
-	while (no != NULL)
+	if (no == NULL)
 	{
-		if (info.prior < no->dado.prior)
-			no = no->esq ;
-		else if (info.prior > no->dado.prior)
-			no = no->dir;
+		no = malloc(sizeof(no));
+		no->dado = info[0];
+		no->esq = NULL;
+		no->dir = NULL;
 	}
 
-	 if (info.prior < no->dado.prior)
-		no->esq = CriaNo(info);
-	 else if (info.prior > no->dado.prior)
-	 	no->dir = CriaNo(info);
-	 else
-		printf("No ja existente ou invalido");
+	struct no* raiz = no;
+
+		for (int i = 1; i < numTarefas; i++) 
+		{
+			while (no != NULL)
+			{
+				if (info[i].prior < no->dado.prior)
+				{
+					//no->esq = info[i].prior;
+					if (no->esq == NULL)
+					{
+						no->esq = malloc(sizeof(no));
+						no->esq->dado = info[i];
+						no->esq->esq = NULL;
+						no->esq->dir = NULL;
+						break;
+					}
+
+					no = no->esq;
+				}
+				else if (info[i].prior > no->dado.prior)
+				{
+					if (no->dir == NULL)
+					{
+						no->dir = malloc(sizeof(no));
+						no->dir->dado = info[i];
+						no->dir->dir = NULL;
+						no->dir->esq = NULL;
+						break;
+					}
+					no = no->dir;
+				}
+			}
+			no = raiz;
+		}
+	return raiz;
 }
 
-void Imprime(no* raiz, int tab)
+void Imprime(no* no, int tab)
 {
+	if (no == NULL)
+		return;
+	
 	for (int i = 0; i < tab; i++)
 	{
 		printf("-");
 	}
 
-	if (raiz != NULL)
+	if (no != NULL)
 	{
-		printf("%c\n", raiz->info);
-		Imprime(raiz->esq, tab + 2);
-		printf("\n");
-		Imprime(raiz->dir, tab + 2);
+		printf("%d\n", no->dado.prior);
+		Imprime(no->esq, tab + 1);
+		Imprime(no->dir, tab + 1);
 	}
 	else printf("vazio");
 }
@@ -61,9 +104,9 @@ no* Busca(no* no, int id)
 
 	while (no != NULL)
 	{
-		if (id < no->id)
+		if (id < no->dado.prior)
 			no = no->esq;
-		else if (id > no->id)
+		else if (id > no->dado.prior)
 			no = no->dir;
 		else                        // se for igual (achou) retorna o no
 			return no;
