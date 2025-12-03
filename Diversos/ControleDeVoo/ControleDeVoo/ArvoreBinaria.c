@@ -4,10 +4,6 @@
 #include "ArvoreBinaria.h"
 #include  "ControleDeVoo.h"
 
-no* Inicializa()
-{
-	return NULL;
-}
 
 void LiberaArvore(no* n)
 {
@@ -19,19 +15,20 @@ void LiberaArvore(no* n)
 	}
 }
 
+no* CriaNo(dados info)
+{
+	no* novoNo = (no*)malloc(sizeof(no));
+	novoNo->dado = info;
+	novoNo->esq = NULL;
+	novoNo->dir = NULL;
+
+	return novoNo;
+}
+
 no* InsereNos(dados* info, int numTarefas)
 {
-	no* novoNo = Inicializa();
-
-	if (novoNo == NULL)
-	{
-		novoNo = (no*)malloc(sizeof(no));
-		novoNo->dado = info[0];
-		novoNo->esq = NULL;
-		novoNo->dir = NULL;
-	}
-
-	struct no* raiz = novoNo;
+	no* novoNo = CriaNo(info[0]);
+	no* raiz = novoNo;
 
 		for (int i = 1; i < numTarefas; i++) 
 		{
@@ -39,26 +36,18 @@ no* InsereNos(dados* info, int numTarefas)
 			{
 				if (info[i].prior < novoNo->dado.prior)
 				{
-					//no->esq = info[i].prior;
 					if (novoNo->esq == NULL)
 					{
-						novoNo->esq = (no*)malloc(sizeof(no));
-						novoNo->esq->dado = info[i];
-						novoNo->esq->esq = NULL;
-						novoNo->esq->dir = NULL;
+						novoNo->esq = CriaNo(info[i]);
 						break;
 					}
-
 					novoNo = novoNo->esq;
 				}
 				else if (info[i].prior > novoNo->dado.prior)
 				{
 					if (novoNo->dir == NULL)
 					{
-						novoNo->dir = malloc(sizeof(no));
-						novoNo->dir->dado = info[i];
-						novoNo->dir->dir = NULL;
-						novoNo->dir->esq = NULL;
+						novoNo->dir = CriaNo(info[i]);
 						break;
 					}
 					novoNo = novoNo->dir;

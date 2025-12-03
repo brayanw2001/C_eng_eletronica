@@ -7,7 +7,7 @@ typedef struct No
 	struct No* esq;
 } no;
 
-no* Inicializa();
+no* CriaNo(dados info);
 void LiberaArvore(no* n);
 no* CriaNo(dados* info);
 void Imprime(no* raiz, int tab);
