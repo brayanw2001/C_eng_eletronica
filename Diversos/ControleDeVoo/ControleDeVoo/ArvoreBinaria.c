@@ -9,71 +9,62 @@ no* Inicializa()
 	return NULL;
 }
 
-//void InsereNos(no* no, dados* info)
-//{
-//	dados* novoNo = CriaNo(info);
-//
-//	while (no != NULL)
-//	{
-//		if (info->prior < no->dado->prior)
-//			no = no->esq ;
-//		else if (info->prior > no->dado->prior)
-//			no = no->dir;
-//	}
-//
-//	 if (info->prior < no->dado->prior)
-//		no->esq = CriaNo(info);
-//	 else if (info->prior > no->dado->prior)
-//	 	no->dir = CriaNo(info);
-//	 else
-//		printf("No ja existente ou invalido");
-//}
+void LiberaArvore(no* n)
+{
+	if (n != NULL)
+	{
+		LiberaArvore(n->dir);
+		LiberaArvore(n->esq);
+		free(n);
+	}
+}
+
 no* InsereNos(dados* info, int numTarefas)
 {
-	no* no = Inicializa();
+	no* novoNo = Inicializa();
 
-	if (no == NULL)
+	if (novoNo == NULL)
 	{
-		no = malloc(sizeof(no));
-		no->dado = info[0];
-		no->esq = NULL;
-		no->dir = NULL;
+		novoNo = (no*)malloc(sizeof(no));
+		novoNo->dado = info[0];
+		novoNo->esq = NULL;
+		novoNo->dir = NULL;
 	}
 
-	struct no* raiz = no;
+	struct no* raiz = novoNo;
 
 		for (int i = 1; i < numTarefas; i++) 
 		{
-			while (no != NULL)
+			while (novoNo != NULL)
 			{
-				if (info[i].prior < no->dado.prior)
+				if (info[i].prior < novoNo->dado.prior)
 				{
 					//no->esq = info[i].prior;
-					if (no->esq == NULL)
+					if (novoNo->esq == NULL)
 					{
-						no->esq = malloc(sizeof(no));
-						no->esq->dado = info[i];
-						no->esq->esq = NULL;
-						no->esq->dir = NULL;
+						novoNo->esq = (no*)malloc(sizeof(no));
+						novoNo->esq->dado = info[i];
+						novoNo->esq->esq = NULL;
+						novoNo->esq->dir = NULL;
 						break;
 					}
 
-					no = no->esq;
+					novoNo = novoNo->esq;
 				}
-				else if (info[i].prior > no->dado.prior)
+				else if (info[i].prior > novoNo->dado.prior)
 				{
-					if (no->dir == NULL)
+					if (novoNo->dir == NULL)
 					{
-						no->dir = malloc(sizeof(no));
-						no->dir->dado = info[i];
-						no->dir->dir = NULL;
-						no->dir->esq = NULL;
+						novoNo->dir = malloc(sizeof(no));
+						novoNo->dir->dado = info[i];
+						novoNo->dir->dir = NULL;
+						novoNo->dir->esq = NULL;
 						break;
 					}
-					no = no->dir;
+					novoNo = novoNo->dir;
 				}
 			}
-			no = raiz;
+			novoNo = raiz;
 		}
 	return raiz;
 }

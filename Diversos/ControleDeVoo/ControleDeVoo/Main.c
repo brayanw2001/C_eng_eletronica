@@ -43,8 +43,18 @@ int main()
                 tarefas = incrementarTarefas(tarefas, &numTarefas);
                 printf("\n\n");
                 break;
+
             case 5:
-                arvoreBinaria = InsereNos(tarefas, numTarefas);
+                if (arvoreBinaria == NULL)
+                {
+                    arvoreBinaria = InsereNos(tarefas, numTarefas);
+                }
+                else
+                {
+                    LiberaArvore(arvoreBinaria);
+                    arvoreBinaria = InsereNos(tarefas, numTarefas);
+                }
+
                 Imprime(arvoreBinaria, 0);
                 break;
             // ... outros cases

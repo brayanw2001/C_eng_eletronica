@@ -8,6 +8,7 @@ typedef struct No
 } no;
 
 no* Inicializa();
+void LiberaArvore(no* n);
 no* CriaNo(dados* info);
 void Imprime(no* raiz, int tab);
 no* Busca(no* no, int id);
