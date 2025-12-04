@@ -87,3 +87,5 @@ dados* incrementarTarefas(dados* tarefas, int *novoTamanho)
 	return tarefaAtualizadas;
 }
 
+dados* excluiMaiorPrior();
+

@@ -5,17 +5,17 @@
 #include  "ControleDeVoo.h"
 
 
-void LiberaArvore(no* n)
+void liberaArvore(no* n)
 {
 	if (n != NULL)
 	{
-		LiberaArvore(n->dir);
-		LiberaArvore(n->esq);
+		liberaArvore(n->dir);
+		liberaArvore(n->esq);
 		free(n);
 	}
 }
 
-no* CriaNo(dados info)
+no* criaNo(dados info)
 {
 	no* novoNo = (no*)malloc(sizeof(no));
 	novoNo->dado = info;
@@ -25,9 +25,9 @@ no* CriaNo(dados info)
 	return novoNo;
 }
 
-no* InsereNos(dados* info, int numTarefas)
+no* insereNos(dados* info, int numTarefas)
 {
-	no* novoNo = CriaNo(info[0]);
+	no* novoNo = criaNo(info[0]);
 	no* raiz = novoNo;
 
 		for (int i = 1; i < numTarefas; i++) 
@@ -38,7 +38,7 @@ no* InsereNos(dados* info, int numTarefas)
 				{
 					if (novoNo->esq == NULL)
 					{
-						novoNo->esq = CriaNo(info[i]);
+						novoNo->esq = criaNo(info[i]);
 						break;
 					}
 					novoNo = novoNo->esq;
@@ -47,7 +47,7 @@ no* InsereNos(dados* info, int numTarefas)
 				{
 					if (novoNo->dir == NULL)
 					{
-						novoNo->dir = CriaNo(info[i]);
+						novoNo->dir = criaNo(info[i]);
 						break;
 					}
 					novoNo = novoNo->dir;
@@ -58,7 +58,7 @@ no* InsereNos(dados* info, int numTarefas)
 	return raiz;
 }
 
-void Imprime(no* no, int tab)
+void imprime(no* no, int tab)
 {
 	if (no == NULL)
 		return;
@@ -71,13 +71,13 @@ void Imprime(no* no, int tab)
 	if (no != NULL)
 	{
 		printf("%d\n", no->dado.prior);
-		Imprime(no->esq, tab + 1);
-		Imprime(no->dir, tab + 1);
+		imprime(no->esq, tab + 1);
+		imprime(no->dir, tab + 1);
 	}
 	else printf("vazio");
 }
 
-no* Busca(no* no, int id)
+no* busca(no* no, int id)
 {
 	if (no == NULL)
 		return NULL;

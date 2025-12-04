@@ -7,9 +7,8 @@ typedef struct No
 	struct No* esq;
 } no;
 
-no* CriaNo(dados info);
-void LiberaArvore(no* n);
-no* CriaNo(dados* info);
-void Imprime(no* raiz, int tab);
-no* Busca(no* no, int id);
-no* InsereNos(dados* info, int numTarefas);
+no* criaNo(dados info);
+void liberaArvore(no* n);
+void imprime(no* raiz, int tab);
+no* busca(no* no, int id);
+no* insereNos(dados* info, int numTarefas);

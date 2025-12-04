@@ -9,6 +9,7 @@
 
 int main() 
 {
+    srand(time(NULL));
 
     int numTarefas, opc;
     dados* tarefas = NULL;
@@ -47,15 +48,15 @@ int main()
             case 5:
                 if (arvoreBinaria == NULL)
                 {
-                    arvoreBinaria = InsereNos(tarefas, numTarefas);
+                    arvoreBinaria = insereNos(tarefas, numTarefas);
                 }
                 else
                 {
-                    LiberaArvore(arvoreBinaria);
-                    arvoreBinaria = InsereNos(tarefas, numTarefas);
+                    liberaArvore(arvoreBinaria);
+                    arvoreBinaria = insereNos(tarefas, numTarefas);
                 }
 
-                Imprime(arvoreBinaria, 0);
+                imprime(arvoreBinaria, 0);
                 break;
             // ... outros cases
             case 9:
