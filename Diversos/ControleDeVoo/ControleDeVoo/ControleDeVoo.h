@@ -10,5 +10,6 @@ typedef struct
 dados* novaTarefa(int numTarefas);
 int* geraPrioridades(int numTarefas);
 dados* incrementarTarefas(dados* tarefas, int *novoTamanho);
+dados* excluiMaiorPrior(dados* tarefas, int* numTarefas);
 
 #endif

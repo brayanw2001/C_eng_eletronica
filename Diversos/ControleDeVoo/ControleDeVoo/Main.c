@@ -45,6 +45,10 @@ int main()
                 printf("\n\n");
                 break;
 
+            case 3:
+                tarefas = excluiMaiorPrior(tarefas, &numTarefas);
+                break;
+
             case 5:
                 if (arvoreBinaria == NULL)
                 {

@@ -87,5 +87,38 @@ dados* incrementarTarefas(dados* tarefas, int *novoTamanho)
 	return tarefaAtualizadas;
 }
 
-dados* excluiMaiorPrior();
+dados* excluiMaiorPrior(dados* tarefas, int* numTarefas)
+{
+	//dados* aux = &tarefas[0];			//	quero mudar os endereços ou apenas sobreescrever as infos?
+	dados guardaMaior = tarefas[0];
+	dados guardaUltimo;
+	dados* tarefasRaealocado;
+	int guardaIndice = 0;
+	int tamVetor = (*numTarefas) - 1;
+
+	for (int i = 0; i < *numTarefas; i++)
+	{
+		if (tarefas[i].prior > guardaMaior.prior)
+		{
+			guardaMaior = tarefas[i];				// salvei os valores da tarefa maior
+			guardaIndice = i;
+		}
+	}
+
+	guardaUltimo = tarefas[tamVetor];
+	tarefas[tamVetor] = guardaMaior;
+	tarefas[guardaIndice] = guardaUltimo;
+
+	printf("\n===== TAREFAS =====");
+	for (int i = 0; i < *numTarefas; i++)
+	{
+		printf("\nDescricao: %s", tarefas[i].tarefa);
+		printf("\nPrioridade: %d", tarefas[i].prior);
+		printf("\n");
+	}
+	printf("==================\n\n");
+
+	(*numTarefas)--;
+	return tarefasRaealocado = (dados*)realloc(tarefas, (sizeof(dados) * (*numTarefas)) );
+}
 
