@@ -109,15 +109,6 @@ dados* excluiMaiorPrior(dados* tarefas, int* numTarefas)
 	tarefas[tamVetor] = guardaMaior;
 	tarefas[guardaIndice] = guardaUltimo;
 
-	printf("\n===== TAREFAS =====");
-	for (int i = 0; i < *numTarefas; i++)
-	{
-		printf("\nDescricao: %s", tarefas[i].tarefa);
-		printf("\nPrioridade: %d", tarefas[i].prior);
-		printf("\n");
-	}
-	printf("==================\n\n");
-
 	(*numTarefas)--;
 	return tarefasRaealocado = (dados*)realloc(tarefas, (sizeof(dados) * (*numTarefas)) );
 }

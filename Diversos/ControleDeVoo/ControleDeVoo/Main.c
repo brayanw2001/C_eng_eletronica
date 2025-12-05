@@ -17,9 +17,10 @@ int main()
 
     do 
     {
-        printf("[1] Criar Vetor\n"
-               "[2] Incrementar tarefas\n"
-               "[3] ...\n"
+        printf("[1] - Criar Vetor\n"
+               "[2] - Incrementar tarefas\n"
+               "[3] - Excluir tarefa com maior prioridade\n"
+               "[4] - Alterar prioridade (em construção...)\n"
                "[5] - Arvore Binaria\n");
 
         printf("Insira a opcao: ");
